@@ -1,0 +1,77 @@
+#HuffCodeX
+
+Part One
+•	Designed and implemented the algorithm in PartOne.cpp to count character frequencies in clear.txt and output freq.txt.
+•	Ensured memory efficiency by processing the file character by character and handling special characters like LF and Space.
+
+Part Two
+•	Designed and implemented the Huffman encoding algorithm.
+•	Tested various versions of freq.txt as input, including edge cases.
+•	Validated results by solving the problems by hand and comparing answers with the program output.
+•	Debugged issues related to the line feeder and space symbols in freq.txt.
+•	Ensured proper formatting of the expected freq.txt file from part one.
+•	Tested various versions of freq.txt as input, including edge cases.
+•	Validated results by solving the problems by hand and comparing answers with the program output.
+
+Part Three A
+•	Implemented the code which reads the clear.txt and codetable.txt to find the binary codes for each character present and save it in the coded.txt file. 
+•	File operations involve processing files character by character, ensuring memory efficiency.
+•	Code Table: codetable.txt is parsed to map characters to binary strings. Look up the character in the code table where Key = Character and Value = Corresponding binary code.
+•	Each character's binary code is written sequentially to coded.txt. At last cleanup is done and file is closed.
+•	Analysed and identified an issue where the line feeder and spaces in clear.txt were not handled properly, leading to errors.
+•	Tested various combinations of clear.txt and codetable.txt to validate the results.
+
+Part Three B
+•	Implemented the decoding functionality for the project.
+•	Developed the code to decode the coded.txt file using the codetable.txt mapping and wrote the decoded content to decoded.txt. The code efficiently processes the input file without loading it entirely into memory, ensuring compatibility with large files. 
+•	Included functionality to analyze the sizes of the original clear.txt and encoded coded.txt files and output the results.
+•	Successfully decoded the text, verified the output correctness, and analyzed file sizes to understand the overhead introduced by encoding.
+•	Ran the program with the provided clear.txt to make sure it successfully generated the decoded.txt file.
+•	Compared the decoded.txt file with the clear.txt file to ensure the code worked as intended.
+
+Part Four A
+•	Loaded the codetable from partThreeA (codetable.txt) into unordered_map.
+•	Using this map, matched code for each of the character from file “clear.txt”.
+•	Set and reset the bits in byte as per the codes with the help of counter (positionOfBit) to index the current active bit.
+•	After each of the 8 bits in the bit set are encoded, converted that bit set into character and then stored it into “codedalt.txt” file.
+•	At the end, for all other leftover bits encoded in the bit set after last character from “clear.txt” file, reset the unused bits and then pushed the character to “codedalt.txt” file.
+•	Ran the program with the provided clear.txt, and it successfully generated the codedalt.txt file.
+•	Confirmed that the program was executed without errors and produced the expected output file.
+
+Size of codedalt.txt file: 261 bytes
+
+Part Four B
+•	Loaded the codetable.txt into an unordered_map to map binary Huffman codes to their respective characters.
+•	Read each byte from codedalt.txt, converted it into bits using std::bitset, and built the currentCode string bit by bit to find matching Huffman codes.
+•	Wrote the decoded characters to decodedalt.txt for each match and ensured leftover garbage bits were handled properly.
+•	Verified the contents of decodedalt.txt by comparing it with the original clear.txt.
+•	Ran all parts sequentially and confirmed that the output files were generated as expected.
+•	Compared the file sizes of clear.txt, coded.txt, and codedalt.txt to analyze the compression results.
+•	Successfully ran the program to generate output file codedalt.txt.
+•	Tested accuracy of the program by matching data from codedalt.txt output file with clear.txt file.
+Size of decodedalt.txt file: 484 bytes
+
+File Size Comparisons:
+clear.txt: 484 byes
+freq.txt: 197 bytes
+coded.txt: 2084 bytes
+codetable.txt: 362 bytes 
+decoded.txt: 484 bytes
+
+codedalt.txt: 261 bytes
+decodedalt.txt: 484 bytes
+
+Part 3B Analysis: The provided clear.txt file has a size of 484 bytes, and its corresponding coded.txt file is 2084 bytes. The coded file is larger because it does not store the actual binary bits for the Huffman codes. Instead, we store the data as strings of 0’s and 1’s (string of characters) which use 1 byte. As a result, the coded.txt file becomes larger, and a significant amount of space is wasted (7 out every 8 bits).
+
+Part 4B Analysis: The size of codedalt.txt is 261 bytes. This is smaller than clear.txt’s 484 bytes, demonstrating how this approach is better than that of part three. There is a huge improvement in the reduction of size when working with bits instead of strings for data compression.
+
+Final setup:
+•	Created header files (.h) for each of the program parts to improve modularity and make it easy to implement the extra credit part of the program.
+•	Ensured each header file is properly structured to prevent multiple inclusions or other errors.
+•	Replaced the main function from each part with a different callable function, while preserving all logic and code that was previously set in place.
+•	Developed a new Main.cpp file that combines all the parts and executes the new callable functions sequentially.
+•	Tested the new implementation with different clear.txt files and checked all output after running each part is correct.
+•	Tested the final file on several large clear.txt files to make sure the program handles pieces of text larger than the given clear.txt
+•	Tested the final file on purely numerical clear.txt files as well 
+•	Compared the content of decoded.txt and decodedalt.txt with clear.txt to make sure they have similar content as well as their size is same.
+
