@@ -75,4 +75,9 @@ This project follows the **Modular Design Pattern** to enhance maintainability a
 
 ---
 
+## **📷 Output Screenshot**
+![Program Output](https://github.com/VaishnaviApsingkar/HuffCodeX/blob/main/OutputImg.png)
+
+---
+
 **Made with ❤️ by Vaishnavi Pravin Apsingkar**
